@@ -1,0 +1,108 @@
+<?php //App_Entity_User
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\User',
+                'id',
+                'username',
+                'roles',
+                'password',
+                'prenom',
+                'nom',
+                'telephone',
+                'profil',
+                'email',
+                'agence',
+                'plainPassword',
+                'transactions',
+                'salt',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'username' => $o[2],
+                    'roles' => $o[3],
+                    'password' => $o[4],
+                    'prenom' => $o[5],
+                    'nom' => $o[6],
+                    'telephone' => $o[7],
+                    'profil' => $o[8],
+                    'email' => $o[9],
+                    'agence' => $o[10],
+                    'plainPassword' => $o[11],
+                    'transactions' => $o[12],
+                    'salt' => $o[13],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'agence:write',
+                ],
+                [
+                    'user:read',
+                    'user:write',
+                    'agence:read',
+                    'agence:write',
+                ],
+                4 => [
+                    'agence:read',
+                    'agence:write',
+                ],
+                [
+                    'user:read',
+                    'user:write',
+                    'agence:read',
+                    'agence:write',
+                ],
+                [
+                    'user:read',
+                    'user:write',
+                    'agence:read',
+                    'agence:write',
+                ],
+                [
+                    'user:read',
+                    'user:write',
+                    'agence:read',
+                    'agence:write',
+                ],
+                [
+                    'user:read',
+                    'user:write',
+                    'agence:read',
+                    'agence:write',
+                ],
+                [
+                    'user:read',
+                    'user:write',
+                    'agence:read',
+                    'agence:write',
+                ],
+            ],
+            'serializedName' => [
+                11 => 'password',
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

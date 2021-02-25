@@ -1,0 +1,86 @@
+<?php //App_Entity_Client
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Client',
+                'id',
+                'nomClient',
+                'nomBeneficiaire',
+                'cniClient',
+                'cniBeneficiaire',
+                'telClient',
+                'telBeneficiaire',
+                'transaction',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'nomClient' => $o[2],
+                    'nomBeneficiaire' => $o[3],
+                    'cniClient' => $o[4],
+                    'cniBeneficiaire' => $o[5],
+                    'telClient' => $o[6],
+                    'telBeneficiaire' => $o[7],
+                    'transaction' => $o[8],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'transaction:write',
+                ],
+                [
+                    'client:read',
+                    'client:write',
+                    'transaction:read',
+                    'transaction:write',
+                ],
+                [
+                    'client:read',
+                    'client:write',
+                    'transaction:read',
+                    'transaction:write',
+                ],
+                [
+                    'client:read',
+                    'client:write',
+                    'transaction:read',
+                    'transaction:write',
+                ],
+                [
+                    'client:read',
+                    'client:write',
+                    'transaction:read',
+                    'transaction:write',
+                ],
+                [
+                    'client:read',
+                    'client:write',
+                    'transaction:read',
+                    'transaction:write',
+                ],
+                [
+                    'client:read',
+                    'client:write',
+                    'transaction:read',
+                    'transaction:write',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];
