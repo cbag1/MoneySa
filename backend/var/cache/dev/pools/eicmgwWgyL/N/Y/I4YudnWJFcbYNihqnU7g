@@ -16,6 +16,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
     ],
     null,
     [
@@ -34,6 +35,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'agence',
                 'plainPassword',
                 'transactions',
+                'isArchived',
                 'salt',
             ],
             'attributesMetadata' => [
@@ -50,7 +52,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'agence' => $o[10],
                     'plainPassword' => $o[11],
                     'transactions' => $o[12],
-                    'salt' => $o[13],
+                    'isArchived' => $o[13],
+                    'salt' => $o[14],
                 ],
             ],
             'groups' => [

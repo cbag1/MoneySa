@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CompteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -34,6 +36,7 @@ class Compte
     /**
      * @ORM\Column(type="integer")
      * @Groups({"agence:read","agence:write"})
+     * @Groups({"transactioncompte:read","transactioncompte:write"})
      */
     private $montant;
 
@@ -47,6 +50,9 @@ class Compte
      * @ORM\OneToOne(targetEntity=Agence::class, mappedBy="compte", cascade={"persist", "remove"})
      */
     private $agence;
+
+
+    
 
     public function getId(): ?int
     {
@@ -110,4 +116,8 @@ class Compte
 
         return $this;
     }
+
+   
+
+    
 }

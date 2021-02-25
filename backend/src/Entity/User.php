@@ -120,6 +120,11 @@ class User implements UserInterface
      */
     private $transactions;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isArchived= false;
+
     public function __construct()
     {
         $this->transactions = new ArrayCollection();
@@ -322,6 +327,18 @@ class User implements UserInterface
                 $transaction->setAgentDepot(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsArchived(): ?bool
+    {
+        return $this->isArchived;
+    }
+
+    public function setIsArchived(bool $isArchived): self
+    {
+        $this->isArchived = $isArchived;
 
         return $this;
     }

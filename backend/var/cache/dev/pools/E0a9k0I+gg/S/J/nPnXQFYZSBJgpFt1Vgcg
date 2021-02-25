@@ -15,6 +15,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'App\\Entity\\Agence',
                     'App\\Entity\\Compte',
                     'App\\Entity\\Transaction',
+                    'App\\Entity\\CompteUser',
                 ],
             ],
         ],

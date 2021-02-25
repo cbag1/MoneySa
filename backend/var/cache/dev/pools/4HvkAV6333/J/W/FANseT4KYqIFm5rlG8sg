@@ -1,0 +1,67 @@
+<?php //%255BApp%255CEntity%255CCompteUser%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'collectionOperations' => [
+                [
+                    'GET' => [
+                        'method' => 'GET',
+                        'path' => '/transactioncompte',
+                    ],
+                    'POST' => [
+                        'method' => 'POST',
+                        'path' => '/transactioncompte',
+                    ],
+                ],
+            ],
+            'itemOperations' => [
+                [
+                    'GET' => [
+                        'method' => 'GET',
+                        'path' => 'transactioncompte/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
+                    ],
+                    'PUT' => [
+                        'method' => 'PUT',
+                        'path' => 'transactioncompte/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [
+                [
+                    'security' => 'is_granted(\'ROLE_CAISSIER\')',
+                    'security_message' => ' Seul le caissier peut avoir acces aux transaction d\'une compte',
+                    'normalization_context' => [
+                        'groups' => [
+                            'transactioncompte:read',
+                        ],
+                    ],
+                    'denormalization_context' => [
+                        'groups' => [
+                            'transactioncompte:write',
+                        ],
+                    ],
+                ],
+            ],
+            'repositoryClass' => [
+                1 => 'App\\Repository\\CompteUserRepository',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+    ],
+    []
+); }];

@@ -38,6 +38,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                      "path"="agence/{id}",
  *                      "requirements"={"id"="\d+"}
  *              },
+ *              "DELETE"= {
+ *                      "method"="DELETE",
+ *                      "path"="agence/{id}",
+ *                      "requirements"={"id"="\d+"}
+ *              },
  *      },
  *      normalizationContext={"groups":{"agence:read"}} ,
  *      denormalizationContext={"groups":{"agence:write"}} ,
@@ -88,6 +93,11 @@ class Agence
      * @Groups({"agence:read","agence:write"})
      */
     private $agent;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isArchived = false;
 
     public function getId(): ?int
     {
@@ -151,6 +161,18 @@ class Agence
     public function setAgent(?User $agent): self
     {
         $this->agent = $agent;
+
+        return $this;
+    }
+
+    public function getIsArchived(): ?bool
+    {
+        return $this->isArchived;
+    }
+
+    public function setIsArchived(bool $isArchived): self
+    {
+        $this->isArchived = $isArchived;
 
         return $this;
     }

@@ -4,6 +4,7 @@
 namespace App\DataPersister;
 
 use App\Entity\Transaction;
+use App\Services\TransactionServices;
 use Doctrine\ORM\EntityManagerInterface;
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -18,15 +19,18 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
     private $_entityManager;
     private $_passwordEncoder;
     private $security;
+    private $transactionservice;
 
     public function __construct(
         EntityManagerInterface $entityManager,
         UserPasswordEncoderInterface $passwordEncoder,
-        Security $security
+        Security $security,
+        TransactionServices $transactionservice
     ) {
         $this->_entityManager = $entityManager;
         $this->_passwordEncoder = $passwordEncoder;
         $this->security = $security;
+        $this->transactionservice = $transactionservice;
     }
 
     /**
@@ -42,8 +46,20 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
      */
     public function persist($data, array $context = [])
     {
+        $data->setCode("t-" . uniqid());
         $data->setAgentDepot($this->security->getUser());
         $data->setDateDepot(new \DateTime());
+
+        $frais = $this->transactionservice->fraisEnvoi($data->getMontant());
+
+        $data->setPartEtat($frais*0.4);
+        $data->setPartEnt($frais*0.3);
+        $data->setPartAgenceDepot($frais*0.1);
+        $data->setPartAgenceRetrait($frais*0.2);
+
+        // dd($data);
+        // dd($data);
+
         // dd($data);
 
         // if ($data->getPlainPassword()) {

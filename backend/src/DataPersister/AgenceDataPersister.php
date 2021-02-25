@@ -46,13 +46,14 @@ class AgenceDataPersister implements ContextAwareDataPersisterInterface
      */
     public function persist($data, array $context = [])
     {
-        $number = count($this->repo_compte)+1;
-        $length = 5;
-        $string = substr(str_repeat(0, $length) . $number, -$length);
+        // $number = count($this->repo_compte)+1;
+        // $length = 5;
+        // $string = substr(str_repeat(0, $length) . $number, -$length);
         // dd($string);
 
 
-        $data->getCompte()->setCode($string);
+
+        $data->getCompte()->setCode("c-".uniqid());
         $data->getCompte()->setCreateAt(new \DateTime());
         $data->getCompte()->setMontant(700000);
         // $data->getAgent()->setProfil("/api/profils/14");
@@ -62,13 +63,16 @@ class AgenceDataPersister implements ContextAwareDataPersisterInterface
 
     /**
      * {@inheritdoc}
+     * @param Agence $data
      */
     public function remove($data, array $context = [])
     {
+        $data->getAgent()->setIsArchived(true);
+        $data->setIsArchived(true);
         // $data->setArchive(1);
         // $this->_entityManager->persist($data);
         // $this->_entityManager->flush();
         // $this->_entityManager->remove($data);
-        // $this->_entityManager->flush();
+        $this->_entityManager->flush();
     }
 }

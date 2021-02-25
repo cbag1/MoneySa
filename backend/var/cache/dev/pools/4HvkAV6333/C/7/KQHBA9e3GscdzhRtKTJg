@@ -1,0 +1,67 @@
+<?php //%255BApp%255CEntity%255CTransaction%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'collectionOperations' => [
+                [
+                    'GET' => [
+                        'method' => 'GET',
+                        'path' => '/transaction',
+                    ],
+                    'POST' => [
+                        'method' => 'POST',
+                        'path' => '/transaction',
+                    ],
+                ],
+            ],
+            'itemOperations' => [
+                [
+                    'GET' => [
+                        'method' => 'GET',
+                        'path' => 'transaction/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
+                    ],
+                    'PUT' => [
+                        'method' => 'PUT',
+                        'path' => 'transaction/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [
+                [
+                    'security' => 'is_granted(\'ROLE_ADMIN_AGENCE\')',
+                    'security_message' => ' Seul l\'admin de l\'agence peut avoir acces aux agences',
+                    'normalization_context' => [
+                        'groups' => [
+                            'transaction:read',
+                        ],
+                    ],
+                    'denormalization_context' => [
+                        'groups' => [
+                            'transaction:write',
+                        ],
+                    ],
+                ],
+            ],
+            'repositoryClass' => [
+                1 => 'App\\Repository\\TransactionRepository',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+    ],
+    []
+); }];

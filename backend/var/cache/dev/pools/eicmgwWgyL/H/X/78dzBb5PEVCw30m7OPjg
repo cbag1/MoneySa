@@ -1,0 +1,54 @@
+<?php //App_Entity_CompteUser
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\CompteUser',
+                'id',
+                'transaction',
+                'type',
+                'user',
+                'compte',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'transaction' => $o[2],
+                    'type' => $o[3],
+                    'user' => $o[4],
+                    'compte' => $o[5],
+                ],
+            ],
+            'groups' => [
+                2 => [
+                    'transactioncompte:read',
+                    'transactioncompte:write',
+                ],
+                [
+                    'transactioncompte:read',
+                    'transactioncompte:write',
+                ],
+                [
+                    'transactioncompte:read',
+                    'transactioncompte:write',
+                ],
+                [
+                    'transactioncompte:read',
+                    'transactioncompte:write',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];
