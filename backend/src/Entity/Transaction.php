@@ -26,6 +26,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                    },        
  * 
  *      },
+ *      itemOperations={
+ *              "GET"= {
+ *                      "method"="GET",
+ *                      "path"="transaction/{id}",
+ *                      "requirements"={"id"="\d+"}
+ *              },
+ *              "PUT"= {
+ *                      "method"="PUT",
+ *                      "path"="transaction/{id}",
+ *                      "requirements"={"id"="\d+"}
+ *              },
+ *      },
  *      normalizationContext={"groups":{"transaction:read"}} ,
  *      denormalizationContext={"groups":{"transaction:write"}} ,
  *     
@@ -71,27 +83,27 @@ class Transaction
      * @ORM\Column(type="integer")
      * @Groups({"transaction:read","transaction:write"})
      */
-    private $partEtat;
+    private $partEtat = 0;
 
     /**
      * @ORM\Column(type="integer")
      * @Groups({"transaction:read","transaction:write"})
      */
-    private $partEnt;
+    private $partEnt = 0;
 
     /**
      * @ORM\Column(type="integer")
      * @Groups({"transaction:read","transaction:write"})
      */
-    private $partAgenceRetrait;
+    private $partAgenceRetrait = 0;
 
     /**
      * @ORM\Column(type="integer")
      * @Groups({"transaction:read","transaction:write"})
      */
-    private $partAgenceDepot;
+    private $partAgenceDepot = 0;
 
-    
+
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="transactions")
      */
@@ -209,8 +221,8 @@ class Transaction
         return $this;
     }
 
- 
-   
+
+
     public function getAgentDepot(): ?User
     {
         return $this->agentDepot;

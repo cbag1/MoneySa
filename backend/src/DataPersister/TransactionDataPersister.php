@@ -43,6 +43,7 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
     public function persist($data, array $context = [])
     {
         $data->setAgentDepot($this->security->getUser());
+        $data->setDateDepot(new \DateTime());
         // dd($data);
 
         // if ($data->getPlainPassword()) {

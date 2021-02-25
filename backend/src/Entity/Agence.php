@@ -5,6 +5,8 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\AgenceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
@@ -24,6 +26,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                      "path"="/agence"
  *                    },        
  * 
+ *      },
+ *      itemOperations={
+ *              "GET"= {
+ *                      "method"="GET",
+ *                      "path"="agence/{id}",
+ *                      "requirements"={"id"="\d+"}
+ *              },
+ *              "PUT"= {
+ *                      "method"="PUT",
+ *                      "path"="agence/{id}",
+ *                      "requirements"={"id"="\d+"}
+ *              },
  *      },
  *      normalizationContext={"groups":{"agence:read"}} ,
  *      denormalizationContext={"groups":{"agence:write"}} ,
@@ -64,6 +78,7 @@ class Agence
     /**
      * @ORM\OneToOne(targetEntity=Compte::class, inversedBy="agence", cascade={"persist", "remove"})
      * @Groups({"agence:read","agence:write"})
+     * @ApiSubresource()
      * 
      */
     private $compte;
@@ -122,6 +137,7 @@ class Agence
 
     public function setCompte(?Compte $compte): self
     {
+        // $compte->setCreateAt(new \DateTime());
         $this->compte = $compte;
 
         return $this;

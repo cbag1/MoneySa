@@ -500,6 +500,8 @@ return array(
     'ApiPlatform\\Core\\Validator\\ValidatorInterface' => $vendorDir . '/api-platform/core/src/Validator/ValidatorInterface.php',
     'App\\Controller\\UserController' => $baseDir . '/src/Controller/UserController.php',
     'App\\DataFixtures\\AppFixtures' => $baseDir . '/src/DataFixtures/AppFixtures.php',
+    'App\\DataPersister\\AgenceDataPersister' => $baseDir . '/src/DataPersister/AgenceDataPersister.php',
+    'App\\DataPersister\\CompteDataPersister' => $baseDir . '/src/DataPersister/CompteDataPersister.php',
     'App\\DataPersister\\TransactionDataPersister' => $baseDir . '/src/DataPersister/TransactionDataPersister.php',
     'App\\DataPersister\\UserDataPersister' => $baseDir . '/src/DataPersister/UserDataPersister.php',
     'App\\Entity\\Agence' => $baseDir . '/src/Entity/Agence.php',

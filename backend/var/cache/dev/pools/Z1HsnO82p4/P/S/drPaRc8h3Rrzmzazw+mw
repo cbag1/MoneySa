@@ -26,6 +26,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'initializable' => [
                 false,
             ],
+            'default' => [
+                0,
+            ],
         ],
         'Symfony\\Component\\PropertyInfo\\Type' => [
             'builtinType' => [

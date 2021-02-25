@@ -993,6 +993,8 @@ class ComposerStaticInitcc36074893b79cddf3d9333cefb208fc
         'ApiPlatform\\Core\\Validator\\ValidatorInterface' => __DIR__ . '/..' . '/api-platform/core/src/Validator/ValidatorInterface.php',
         'App\\Controller\\UserController' => __DIR__ . '/../..' . '/src/Controller/UserController.php',
         'App\\DataFixtures\\AppFixtures' => __DIR__ . '/../..' . '/src/DataFixtures/AppFixtures.php',
+        'App\\DataPersister\\AgenceDataPersister' => __DIR__ . '/../..' . '/src/DataPersister/AgenceDataPersister.php',
+        'App\\DataPersister\\CompteDataPersister' => __DIR__ . '/../..' . '/src/DataPersister/CompteDataPersister.php',
         'App\\DataPersister\\TransactionDataPersister' => __DIR__ . '/../..' . '/src/DataPersister/TransactionDataPersister.php',
         'App\\DataPersister\\UserDataPersister' => __DIR__ . '/../..' . '/src/DataPersister/UserDataPersister.php',
         'App\\Entity\\Agence' => __DIR__ . '/../..' . '/src/Entity/Agence.php',

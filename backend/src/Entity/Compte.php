@@ -35,13 +35,13 @@ class Compte
      * @ORM\Column(type="integer")
      * @Groups({"agence:read","agence:write"})
      */
-    private $montant =500000;
+    private $montant;
 
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"agence:read","agence:write"})
      */
-    private $createAt;
+    private $createAt ;
 
     /**
      * @ORM\OneToOne(targetEntity=Agence::class, mappedBy="compte", cascade={"persist", "remove"})

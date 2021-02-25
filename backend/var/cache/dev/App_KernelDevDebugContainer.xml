@@ -376,6 +376,19 @@
       <tag name="doctrine.fixture.orm"/>
       <argument type="service" id="security.user_password_encoder.generic"/>
     </service>
+    <service id="App\DataPersister\AgenceDataPersister" class="App\DataPersister\AgenceDataPersister" autowire="true" autoconfigure="true">
+      <tag name="api_platform.data_persister"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="security.user_password_encoder.generic"/>
+      <argument type="service" id="security.helper"/>
+      <argument type="service" id="App\Repository\CompteRepository"/>
+    </service>
+    <service id="App\DataPersister\CompteDataPersister" class="App\DataPersister\CompteDataPersister" autowire="true" autoconfigure="true">
+      <tag name="api_platform.data_persister"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="security.user_password_encoder.generic"/>
+      <argument type="service" id="security.helper"/>
+    </service>
     <service id="App\DataPersister\TransactionDataPersister" class="App\DataPersister\TransactionDataPersister" autowire="true" autoconfigure="true">
       <tag name="api_platform.data_persister"/>
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
@@ -4975,6 +4988,10 @@
     <service id=".abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.ApiPlatform\Core\DataPersister\DataPersisterInterface.0.App\DataPersister\AgenceDataPersister" class="App\DataPersister\AgenceDataPersister" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\DataPersister\AgenceDataPersister" class="App\DataPersister\AgenceDataPersister" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.ApiPlatform\Core\DataPersister\DataPersisterInterface.0.App\DataPersister\CompteDataPersister" class="App\DataPersister\CompteDataPersister" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\DataPersister\CompteDataPersister" class="App\DataPersister\CompteDataPersister" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.ApiPlatform\Core\DataPersister\DataPersisterInterface.0.App\DataPersister\TransactionDataPersister" class="App\DataPersister\TransactionDataPersister" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataPersister\TransactionDataPersister" class="App\DataPersister\TransactionDataPersister" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.ApiPlatform\Core\DataPersister\DataPersisterInterface.0.App\DataPersister\UserDataPersister" class="App\DataPersister\UserDataPersister" autowire="true" abstract="true"/>
