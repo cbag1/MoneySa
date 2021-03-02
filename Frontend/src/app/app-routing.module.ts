@@ -15,6 +15,22 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'admin-agence',
+    loadChildren: () => import('./admin-agence/admin-agence.module').then( m => m.AdminAgencePageModule)
+  },
+  {
+    path: 'sidemenu',
+    loadChildren: () => import('./sidemenu/sidemenu.module').then( m => m.SidemenuPageModule)
+  },
+  {
+    path: 'calcfrais',
+    loadChildren: () => import('./calcfrais/calcfrais.module').then( m => m.CalcfraisPageModule)
+  },
+  {
+    path: 'depot',
+    loadChildren: () => import('./depot/depot.module').then( m => m.DepotPageModule)
+  },
 ];
 
 @NgModule({
