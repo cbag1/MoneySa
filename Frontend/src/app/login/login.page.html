@@ -17,27 +17,29 @@
 
   <div class="padding">
 
+    <form [formGroup]="form"  (ngSubmit)="loginProcess()" >
 
-    <ion-item>
-      <ion-label position="stacked"> Téléphone </ion-label>
-      <ion-input type="email"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked"> Username </ion-label>
+        <ion-input type="text" name="username" formControlName="username"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked"> Password </ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label position="stacked"> Password </ion-label>
+        <ion-input type="password" name="password" formControlName="password"></ion-input>
+      </ion-item>
 
-    <br>
+      <br>
 
-    <ion-item lines="none">
-      <ion-button slot="start" fill="clear"> Mot de passe publié ? </ion-button>
-    </ion-item>
+      <ion-item lines="none">
+        <ion-button slot="start" fill="clear"> Mot de passe publié ? </ion-button>
+      </ion-item>
 
-    <br>
-    <ion-button color="secondary" expand="block" shape="round">
-      Se connecter
-    </ion-button>
+      <br>
+      <ion-button type="submit" color="secondary" expand="block" shape="round">
+        Se connecter
+      </ion-button>
+    </form>
 
   </div>
 
