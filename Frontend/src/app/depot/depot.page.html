@@ -13,7 +13,8 @@
     </div>
   </div>
   <div class="contenu">
-    <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)" value="emetteur">
+
+    <ion-segment name="segment" [(ngModel)]="segment" color="tertiary" (ionChange)="segmentChanged($event)">
 
       <ion-segment-button value="emetteur">
         Emetteur
@@ -24,87 +25,83 @@
 
     </ion-segment>
 
+    <form action="" [formGroup]="form" (ngSubmit)="loginProcess()">
+      <div>
+        <div *ngIf="segment === 'emetteur'">
 
-    <div [ngSwitch]="segment">
-      <div *ngSwitchCase="'emetteur'">
+          <div formGroupName="client">
+            <ion-item>
+              <ion-label position="stacked">
+                N CNI
+              </ion-label>
+              <ion-input type="number" pattern="[0-9]{11}" formControlName="cniClient"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">
+                Nom
+              </ion-label>
+              <ion-input type="text" formControlName="nomClient"></ion-input>
+            </ion-item>
 
-        <ion-item>
-          <ion-label position="stacked">
-            N CNI
-          </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">
-            Nom
-          </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">
-            Prénom
-          </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">
-            Téléphone
-          </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">
-            Montant
-          </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">
-            Frais
-          </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">
-            Total
-          </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-      </div>
+            <ion-item>
+              <ion-label position="stacked">
+                Téléphone
+              </ion-label>
+              <ion-input type="number" pattern="[0-9]{9}" formControlName="telClient"></ion-input>
+            </ion-item>
+
+          </div>
+          <ion-item>
+            <ion-label position="stacked">
+              Montant
+            </ion-label>
+            <ion-input type="number" formControlName="montant"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">
+              Frais
+            </ion-label>
+            <ion-input type="text" disabled></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">
+              Total
+            </ion-label>
+            <ion-input type="text" disabled ></ion-input>
+          </ion-item>
+        </div>
 
 
-      <!-- Beneficiaire -->
-      <div *ngSwitchCase="'beneficiaire'">
+        <!-- Beneficiaire -->
+        <div *ngIf="segment === 'beneficiaire'">
 
-        <ion-item>
-          <ion-label position="stacked">
-            Nom
-          </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">
-            Prénom
-          </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">
-            Téléphone
-          </ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
+          <div formGroupName="client">
+            <ion-item>
+              <ion-label position="stacked">
+                Nom
+              </ion-label>
+              <ion-input type="text" formControlName="nomBeneficiaire"></ion-input>
+            </ion-item>
 
+            <ion-item>
+              <ion-label position="stacked">
+                Téléphone
+              </ion-label>
+              <ion-input type="number" pattern="[0-9]{9}" formControlName="telBeneficiaire"></ion-input>
+            </ion-item>
+          </div>
+
+
+        </div>
 
 
       </div>
 
+      <br>
+      <ion-button type="submit" [disabled]="!form.valid" expand="block" slot="bottom" color="danger" shape="round">
+        Suivant
+      </ion-button>
 
-    </div>
-
-    <br>
-    <ion-button expand="block" slot="bottom" color="danger" shape="round">
-      Suivant
-    </ion-button>
+    </form>
   </div>
 </ion-content>

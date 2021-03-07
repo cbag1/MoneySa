@@ -18,6 +18,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                         'method' => 'POST',
                         'path' => '/users',
                     ],
+                    'get_agence' => [
+                        'method' => 'GET',
+                        'path' => '/users/{id}/agence',
+                        'controller' => 'UserController',
+                    ],
                 ],
             ],
             'attributes' => [

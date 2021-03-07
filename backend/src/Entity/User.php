@@ -27,7 +27,12 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
  *              "POST"={
  *                      "method"="POST",
  *                      "path"="/users"
- *                    },        
+ *                    },    
+ *              "get_agence"={
+ *                      "method"="GET",
+ *                      "path"="/users/{id}/agence",
+ *                      "controller" =  UserController::class
+ *                    },
  * 
  *      },
  *      normalizationContext={"groups":{"user:read"}} ,

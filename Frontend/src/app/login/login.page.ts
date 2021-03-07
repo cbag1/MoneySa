@@ -34,17 +34,20 @@ export class LoginPage implements OnInit {
 
   loginProcess() {
     console.log(this.form.value);
-    console.log("test");
+    // console.log("test");
     this.auth.login(this.form.value).subscribe(result => {
-      console.log(result);
+      // console.log(result);
       var token_decode = jwt_decode(result['token']);
-
+      console.log(token_decode);
+      localStorage.setItem('id', token_decode['id']);
+      console.log((localStorage.getItem('id')));
       switch (token_decode['roles'][0]) {
 
 
-        case "ROLE_ADMIN":
+        case "ROLE_ADMIN_AGENCE":
           this.router.navigate(['/admin-agence']);
           break;
+
 
 
       }

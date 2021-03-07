@@ -22,12 +22,17 @@ export class AuthService {
         if (response) {
           // console.log(response);
           //console.log(response);
-          // localStorage.setItem('jwt', JSON.stringify(response));
+          localStorage.setItem('jwt', JSON.stringify(response));
           this._userIsAuthenticated = true;
           return response;
         }
       })
     );
+  }
+
+  getUser(id: string) {
+
+    return this.http.get(`http://localhost:8000/api/users/${id}/agence`);
   }
 
   logout() {

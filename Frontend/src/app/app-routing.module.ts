@@ -35,6 +35,10 @@ const routes: Routes = [
     loadChildren: () => import('./depot/depot.module').then( m => m.DepotPageModule),
     canLoad: [AuthGuard]
   },
+  {
+    path: 'transaction',
+    loadChildren: () => import('./transaction/transaction.module').then( m => m.TransactionPageModule)
+  },
 ];
 
 @NgModule({

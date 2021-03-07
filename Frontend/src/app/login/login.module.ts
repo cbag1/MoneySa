@@ -23,7 +23,7 @@ export class LoginPageModule {
   constructor() {
     // document.getElementById("ion-tab").style.display="None";
     // this.ionViewWillEnter();
-    document.getElementById("menu-bas").style.display = "None";
+    // document.getElementById("menu-bas").style.display = "None";
   }
 
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,14 +13,13 @@ import { DepotPage } from './depot.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    DepotPageRoutingModule
+    DepotPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [DepotPage]
 })
 export class DepotPageModule {
 
 
-  segmentChanged(ev: any) {
-    console.log('Segment changed', ev);
-  }
+
 }

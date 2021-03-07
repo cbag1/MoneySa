@@ -1,3 +1,4 @@
+import { AuthService } from './../login/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,12 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminAgencePage implements OnInit {
 
-  constructor() {
-    document.getElementById("menu-bas").style.display = "block";
+  private iduser = localStorage.getItem('id');
+  private agence:any;
+
+  constructor( private authservice:AuthService) {
   }
 
   ngOnInit() {
+    this.initList();
+  }
 
+  initList(){
+    this.authservice.getUser(this.iduser).subscribe(res => {
+      this.agence = res['hydra:member'];
+      // this.profils = Array.of(this.profils);
+      console.log("test agence");
+      console.log(this.agence);
+    });
   }
 
 }
