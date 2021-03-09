@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'transaction',
     loadChildren: () => import('./transaction/transaction.module').then( m => m.TransactionPageModule)
   },
+  {
+    path: 'retrait',
+    loadChildren: () => import('./retrait/retrait.module').then( m => m.RetraitPageModule)
+  },
 ];
 
 @NgModule({

@@ -36,7 +36,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                      "method"="PUT",
  *                      "path"="transaction/{id}",
  *                      "requirements"={"id"="\d+"}
- *              },
+ *              },    
+ *              "get_transaction"={
+ *                      "method"="GET",
+ *                      "path"="/transaction/{code}",
+ *                      "controller" =  TransactionController::class
+ *                    }
  *      },
  *      normalizationContext={"groups":{"transaction:read"}} ,
  *      denormalizationContext={"groups":{"transaction:write"}} ,
@@ -50,7 +55,7 @@ class Transaction
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"transaction:write"})
+     * @Groups({"transaction:read"})
      * 
      */
     private $id;

@@ -26,6 +26,18 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                    },        
  * 
  *      },
+ *      itemOperations={
+ *              "GET"= {
+ *                      "method"="GET",
+ *                      "path"="client/{id}",
+ *                      "requirements"={"id"="\d+"}
+ *              },
+ *              "PUT"= {
+ *                      "method"="PUT",
+ *                      "path"="client/{id}",
+ *                      "requirements"={"id"="\d+"}
+ *              }
+ *      },
  *      normalizationContext={"groups":{"client:read"}} ,
  *      denormalizationContext={"groups":{"client:write"}} ,
  *     
@@ -39,7 +51,8 @@ class Client
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"transaction:write"})
+     * @Groups({"client:read"})
+     * @Groups({"transaction:read","transaction:write"})
      * 
      */
     private $id;

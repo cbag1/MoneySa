@@ -1,0 +1,111 @@
+<ion-content>
+
+  <div class="entete">
+    <div class="logo">
+      <img src="../../assets/logo.png" alt="">
+    </div>
+
+    <div class="t-login">
+      <span>
+        <ion-icon color="secondary" slot="start" name="return-up-forward-outline"></ion-icon>
+        <ion-text color="secondary"> Retrait </ion-text>
+      </span>
+    </div>
+  </div>
+  <div class="contenu">
+    <br>
+
+    <ion-item>
+      <ion-label position="stacked"> Code :</ion-label>
+      <ion-input (keydown)="onKeydown($event)" [(ngModel)]="code" type="text"> </ion-input>
+    </ion-item>
+
+
+
+    <ion-segment name="segment" [(ngModel)]="segment" color="tertiary" (ionChange)="segmentChanged($event)">
+
+      <ion-segment-button value="beneficiaire">
+        Bénéficiaire
+      </ion-segment-button>
+      <ion-segment-button value="emetteur">
+        Emetteur
+      </ion-segment-button>
+
+    </ion-segment>
+
+    <form action="" [formGroup]="form" (ngSubmit)="retraitProcess()">
+      <div>
+        <div *ngIf="segment === 'beneficiaire'">
+
+
+          <ion-item>
+            <ion-label position="stacked">
+              N CNI
+            </ion-label>
+            <ion-input type="string" formControlName="cniBeneficiaire" pattern="[0-9]{11}"></ion-input>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-label position="stacked">
+              NOM & PRÉNOM
+            </ion-label>
+            <ion-input type="text"> {{ client.nomBeneficiaire }} </ion-input>
+
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="stacked">
+              Montant à recevoir
+            </ion-label>
+            <ion-input type="text"> {{ informations.montant }} </ion-input>
+
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="stacked">
+              Téléphone
+            </ion-label>
+            <ion-input type="text"> {{ client.telBeneficiaire }} </ion-input>
+
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="stacked">
+              Date d'envoi
+            </ion-label>
+            <ion-input type="text"> {{ informations.dateDepot }} </ion-input>
+
+          </ion-item>
+
+
+
+        </div>
+
+        <!-- Beneficiaire -->
+        <div *ngIf="segment === 'emetteur'">
+
+          <ion-item>
+            <ion-label position="stacked">
+              Nom
+            </ion-label>
+            <ion-input type="text"> {{ client.nomClient }}</ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">
+              Téléphone
+            </ion-label>
+            <ion-input type="number" pattern="[0-9]{9}"> {{ client.telClient }}</ion-input>
+          </ion-item>
+
+
+        </div>
+
+
+      </div>
+
+      <br>
+      <ion-button type="submit" expand="block" slot="bottom" color="danger" shape="round">
+        Suivant
+      </ion-button>
+
+    </form>
+  </div>
+</ion-content>

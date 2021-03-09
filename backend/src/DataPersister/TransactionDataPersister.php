@@ -46,16 +46,24 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
      */
     public function persist($data, array $context = [])
     {
-        $data->setCode("t-" . uniqid());
-        $data->setAgentDepot($this->security->getUser());
-        $data->setDateDepot(new \DateTime());
+        
+
+        if ($data->getAgentDepot() === null) {
+            $data->setCode("t-" . uniqid());
+            $data->setAgentDepot($this->security->getUser());
+            $data->setDateDepot(new \DateTime());
+        } else {
+            $data->setAgentRetrait($this->security->getUser());
+            $data->setDateRetrait(new \DateTime());
+            // dd($data->getClient()->getId());
+        }
 
         $frais = $this->transactionservice->fraisEnvoi($data->getMontant());
 
-        $data->setPartEtat($frais*0.4);
-        $data->setPartEnt($frais*0.3);
-        $data->setPartAgenceDepot($frais*0.1);
-        $data->setPartAgenceRetrait($frais*0.2);
+        $data->setPartEtat($frais * 0.4);
+        $data->setPartEnt($frais * 0.3);
+        $data->setPartAgenceDepot($frais * 0.1);
+        $data->setPartAgenceRetrait($frais * 0.2);
 
         // dd($data);
         // dd($data);

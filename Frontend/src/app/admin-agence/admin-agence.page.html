@@ -23,18 +23,20 @@
       </ion-card-header> -->
       <ion-card-content>
         <ion-card-subtitle> Mon solde disponible </ion-card-subtitle>
-        <ion-card-title><b>150 000</b> <span> F CFA </span></ion-card-title>
-        <span> Mise à jour le 22/02/21 à 13:15 </span>
+        <ion-card-title><b> {{ montant }} </b> <span> F CFA </span></ion-card-title>
+        <!-- <span> Mise à jour le 22/02/21 à 13:15 </span> -->
+        <span> {{ datemodification }} </span>
+
       </ion-card-content>
 
-      <!-- <ion-icon name="eye-outline" ></ion-icon> -->
+      <!-- <ion-icon color="secondary" name="eye-outline" id="icon-visible" ></ion-icon> -->
     </ion-card>
 
   </div>
 
   <div class="menu-admin">
 
-    <ion-item lines="none" color='white' routerLink="/depot" >
+    <ion-item lines="none" color='white' routerLink="/depot">
 
       <ion-icon name="return-up-forward-outline"></ion-icon>
       <ion-button fill="clear"> Dépôt </ion-button>
@@ -65,7 +67,7 @@
       <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
     </ion-item>
 
-    <ion-item lines="none" color='white'>
+    <ion-item lines="none" color='white' routerLink="/calcfrais">
       <ion-icon name="calculator-sharp"></ion-icon>
       <ion-button fill="clear"> Calcul des Frais </ion-button>
       <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>

@@ -32,7 +32,7 @@ class UserController extends AbstractController
         // dd("VOila ça marche legui");
         //  dd($id);
          $groupe= $repoagence->findByAgent($id);
-         dd($groupe[0]);
+        //  dd($groupe[0]);
         return $this->json($groupe,Response::HTTP_OK);
 
      }

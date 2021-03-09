@@ -29,17 +29,18 @@
 
     </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">
-        Montant
-      </ion-label>
-      <ion-input type="text"> </ion-input>
-    </ion-item>
+    <form action="" [formGroup]="form" >
+      <ion-item>
+        <ion-label position="stacked">
+          Montant
+        </ion-label>
+        <ion-input type="text" name="montant" formControlName="montant">  </ion-input>
+      </ion-item>
 
-    <br>
-    <ion-button item-end color="danger" shape="round">
-      Calculer
-    </ion-button>
-
+      <br>
+      <ion-button [disabled]="!form.valid" (click)="calcProcess()" item-end color="danger" shape="round">
+        Calculer
+      </ion-button>
+    </form>
   </div>
 </ion-content>

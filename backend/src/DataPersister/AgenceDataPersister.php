@@ -7,6 +7,7 @@ use App\Entity\Agence;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CompteRepository;
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
+use App\Entity\Compte;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
 
@@ -51,11 +52,17 @@ class AgenceDataPersister implements ContextAwareDataPersisterInterface
         // $string = substr(str_repeat(0, $length) . $number, -$length);
         // dd($string);
 
+        if ($data->getCompte() === null) {
+            $compte = new Compte();
+            $compte->setCode("c-" . uniqid());
+            $compte->setCreateAt(new \DateTime());
+            $compte->setMontant(700000);
+            $data->setCompte($compte);
+        }
 
-
-        $data->getCompte()->setCode("c-".uniqid());
-        $data->getCompte()->setCreateAt(new \DateTime());
-        $data->getCompte()->setMontant(700000);
+        // $data->getCompte()->setCode("c-".uniqid());
+        // $data->getCompte()->setCreateAt(new \DateTime());
+        // $data->getCompte()->setMontant(700000);
         // $data->getAgent()->setProfil("/api/profils/14");
         $this->_entityManager->persist($data);
         $this->_entityManager->flush();
