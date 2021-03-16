@@ -7,6 +7,7 @@ use App\Entity\Transaction;
 use App\Services\TransactionServices;
 use Doctrine\ORM\EntityManagerInterface;
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
+use App\Repository\AgenceRepository;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
 
@@ -20,17 +21,21 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
     private $_passwordEncoder;
     private $security;
     private $transactionservice;
+    private $agences;
+
 
     public function __construct(
         EntityManagerInterface $entityManager,
         UserPasswordEncoderInterface $passwordEncoder,
         Security $security,
-        TransactionServices $transactionservice
+        TransactionServices $transactionservice,
+        AgenceRepository $agence
     ) {
         $this->_entityManager = $entityManager;
         $this->_passwordEncoder = $passwordEncoder;
         $this->security = $security;
         $this->transactionservice = $transactionservice;
+        $this->agences = $agence;
     }
 
     /**
@@ -46,16 +51,20 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
      */
     public function persist($data, array $context = [])
     {
-        
+        $userbyagence = $this->agences->findByAgent($this->security->getUser());
+        // dd($userbyagence[0]->getCompte()->getMontant());
+        // dd($this->security->getUser());
 
         if ($data->getAgentDepot() === null) {
             $data->setCode("t-" . uniqid());
             $data->setAgentDepot($this->security->getUser());
             $data->setDateDepot(new \DateTime());
+            $userbyagence[0]->getCompte()->setMontant($userbyagence[0]->getCompte()->getMontant() + $data->getMontant());
+            // dd($userbyagence[0]->getCompte()->getMontant());
         } else {
             $data->setAgentRetrait($this->security->getUser());
             $data->setDateRetrait(new \DateTime());
-            // dd($data->getClient()->getId());
+            $userbyagence[0]->getCompte()->setMontant($userbyagence[0]->getCompte()->getMontant() - $data->getMontant());
         }
 
         $frais = $this->transactionservice->fraisEnvoi($data->getMontant());
@@ -66,21 +75,7 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
         $data->setPartAgenceRetrait($frais * 0.2);
 
         // dd($data);
-        // dd($data);
 
-        // dd($data);
-
-        // if ($data->getPlainPassword()) {
-        //     $data->setPassword(
-        //         $this->_passwordEncoder->encodePassword(
-        //             $data,
-        //             $data->getPlainPassword()
-        //         )
-        //     );
-        //     // dd($data->getPassword());
-
-        //     $data->eraseCredentials();
-        // }
 
 
         $this->_entityManager->persist($data);

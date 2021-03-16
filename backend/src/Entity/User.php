@@ -49,7 +49,8 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"agence:write"})
+     * @Groups({"agence:read"})
+     * 
      */
     private $id;
 
@@ -57,6 +58,9 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      * @Groups({"user:read","user:write"})
      * @Groups({"agence:read","agence:write"})
+     * @Groups({"client-agence:read"})
+     * 
+     * 
      */
     private $username;
 
@@ -78,6 +82,8 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read","user:write"})
      * @Groups({"agence:read","agence:write"})
+     * @Groups({"client-agence:read"})
+     * 
      */
     private $prenom;
 
@@ -85,6 +91,8 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read","user:write"})
      * @Groups({"agence:read","agence:write"})
+     * @Groups({"client-agence:read"})
+     * 
      */
     private $nom;
 

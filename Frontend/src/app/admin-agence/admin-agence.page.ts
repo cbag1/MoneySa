@@ -1,5 +1,7 @@
 import { AuthService } from './../login/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-agence',
@@ -13,7 +15,7 @@ export class AdminAgencePage implements OnInit {
   private montant;
   private datemodification;
 
-  constructor(private authservice: AuthService) {
+  constructor(private authservice: AuthService, private alertCtrl: AlertController, private router: Router) {
   }
 
   ngOnInit() {
@@ -34,9 +36,36 @@ export class AdminAgencePage implements OnInit {
       console.log("test agence");
       // console.log(res);
       this.montant=this.agence.compte.montant;
-      console.log(this.montant);
+      // console.log(this.montant);
       console.log(this.agence);
     });
+  }
+
+
+ async depotredirect(){
+    console.log("Cool gayin");
+    const alert = await this.alertCtrl.create({
+      header: 'Type de Dépot !',
+     
+      buttons: [
+        {
+          text: 'Compte',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            // console.log('Confirm Cancel: blah');
+            this.router.navigate(['/depot-compte']);
+          }
+        }, {
+          text: 'Sans Compte',
+          handler: () => {
+            // console.log("Testt");
+            this.router.navigate(['/depot']);
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
 }

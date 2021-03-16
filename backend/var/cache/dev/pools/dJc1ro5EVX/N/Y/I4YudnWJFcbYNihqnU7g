@@ -58,13 +58,14 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'groups' => [
                 1 => [
-                    'agence:write',
+                    'agence:read',
                 ],
                 [
                     'user:read',
                     'user:write',
                     'agence:read',
                     'agence:write',
+                    'client-agence:read',
                 ],
                 4 => [
                     'agence:read',
@@ -75,12 +76,14 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'user:write',
                     'agence:read',
                     'agence:write',
+                    'client-agence:read',
                 ],
                 [
                     'user:read',
                     'user:write',
                     'agence:read',
                     'agence:write',
+                    'client-agence:read',
                 ],
                 [
                     'user:read',

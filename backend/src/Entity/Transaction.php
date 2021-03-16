@@ -36,10 +36,21 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                      "method"="PUT",
  *                      "path"="transaction/{id}",
  *                      "requirements"={"id"="\d+"}
- *              },    
+ *              }, 
+ *              "DELETE"= {
+ *                      "method"="DELETE",
+ *                      "path"="transaction/{id}",
+ *                      "requirements"={"id"="\d+"}
+ *              },   
  *              "get_transaction"={
  *                      "method"="GET",
- *                      "path"="/transaction/{code}",
+ *                      "path"="transaction/code/{code}",
+ *                      "controller" = TransactionController::class,
+ *                      "defaults"={"identifiedBy"="code"}
+ *                    },
+ *              "get_transaction_by_user"={
+ *                      "method"="GET",
+ *                      "path"="/transaction/agent/{id}",
  *                      "controller" =  TransactionController::class
  *                    }
  *      },
@@ -111,11 +122,13 @@ class Transaction
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="transactions")
+     * @Groups({"transaction:read","transaction:write"})
      */
     private $agentDepot;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="transactions")
+     * @Groups({"transaction:read","transaction:write"})
      */
     private $agentRetrait;
 

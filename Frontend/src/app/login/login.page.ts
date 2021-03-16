@@ -17,7 +17,19 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.initForm();
+
   }
+
+  // //hide nav bar when we enter the page
+  // onPageWillEnter() {
+  //   console.log("Page in console");
+  //   document.getElementById("menu-bas").style.display="None";
+  // }
+
+  // //show nav bar when we leave the page
+  // onPageDidLeave() {
+  //   document.getElementById("menu-bas").style.display="block";
+  // }
 
   initForm() {
     this.form = new FormGroup({
@@ -47,6 +59,11 @@ export class LoginPage implements OnInit {
         case "ROLE_ADMIN_AGENCE":
           this.router.navigate(['/admin-agence']);
           break;
+
+        case "ROLE_CLIENT":
+          this.router.navigate(['/user-agence']);
+          break;
+
 
 
 

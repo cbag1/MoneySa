@@ -1,0 +1,98 @@
+<ion-content>
+
+  <div class="header">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button auto-hide="false"></ion-menu-button>
+      </ion-buttons>
+
+      <ion-avatar>
+        <img src="../../assets/logo.png">
+      </ion-avatar>
+
+      <ion-avatar slot="end">
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-avatar>
+    </ion-toolbar>
+  </div>
+  <div class="padding">
+    <ion-card>
+      <!-- <ion-card-header>
+        <ion-card-subtitle><b> Mon solde disponible </b></ion-card-subtitle>
+        <ion-card-title><b>150 000</b> fcfa </ion-card-title>
+      </ion-card-header> -->
+      <ion-card-content>
+        <ion-card-subtitle> Mon solde disponible </ion-card-subtitle>
+        <ion-card-title><b> {{ montant }} </b> <span> F CFA </span></ion-card-title>
+        <!-- <span> Mise à jour le 22/02/21 à 13:15 </span> -->
+        <span> {{ datemodification }} </span>
+
+      </ion-card-content>
+
+      <!-- <ion-icon color="secondary" name="eye-outline" id="icon-visible" ></ion-icon> -->
+    </ion-card>
+
+  </div>
+
+  <div class="menu-admin">
+
+    <ion-item lines="none" color='white' routerLink="/depot">
+
+      <ion-icon name="return-up-forward-outline"></ion-icon>
+      <ion-button fill="clear"> Dépot </ion-button>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="none" color='white' routerLink="/retrait">
+      <ion-icon name="return-up-back-outline"></ion-icon>
+      <ion-button fill="clear"> Retrait </ion-button>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="none" color='white' routerLink="/transaction">
+      <ion-icon name="sync-outline"></ion-icon>
+      <ion-button fill="clear"> Mes Transactions </ion-button>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+
+    <ion-item lines="none" color='white' routerLink="/calcfrais">
+      <ion-icon name="calculator-sharp"></ion-icon>
+      <ion-button fill="clear"> Calcul des Frais </ion-button>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="none" color='white'>
+      <ion-icon name="log-out-outline"></ion-icon>
+      <ion-button fill="clear"> Deconnexion </ion-button>
+      <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
+    </ion-item>
+
+
+  </div>
+
+
+  <div>
+    <ion-tabs id="ion-tabs">
+      <ion-tab-bar id="menu-bas" slot="bottom">
+        <ion-tab-button tab="schedule" routerLink="/admin-agence">
+          <ion-icon name="home-sharp"></ion-icon>
+        </ion-tab-button>
+
+        <ion-tab-button tab="speakers">
+          <ion-icon name="sync-sharp"></ion-icon>
+        </ion-tab-button>
+
+        <ion-tab-button tab="map">
+          <ion-icon name="log-in-sharp"></ion-icon>
+        </ion-tab-button>
+
+        <ion-tab-button tab="about">
+          <ion-icon name="calculator-sharp"></ion-icon>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
+
+
+</ion-content>

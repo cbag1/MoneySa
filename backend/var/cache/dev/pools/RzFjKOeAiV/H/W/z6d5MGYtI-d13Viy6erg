@@ -1,0 +1,77 @@
+<?php //%255BApp%255CEntity%255CClientAgence%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Core\\Annotation\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiResource')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'collectionOperations' => [
+                [
+                    'GET' => [
+                        'method' => 'GET',
+                        'path' => 'client-agence',
+                    ],
+                    'POST' => [
+                        'method' => 'POST',
+                        'path' => 'client-agence',
+                    ],
+                ],
+            ],
+            'itemOperations' => [
+                [
+                    'GET' => [
+                        'method' => 'GET',
+                        'path' => 'client-agence/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
+                    ],
+                    'PUT' => [
+                        'method' => 'PUT',
+                        'path' => 'client-agence/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
+                    ],
+                    'DELETE' => [
+                        'method' => 'DELETE',
+                        'path' => 'client-agence/{id}',
+                        'requirements' => [
+                            'id' => '\\d+',
+                        ],
+                    ],
+                    'get_client_by_user' => [
+                        'method' => 'GET',
+                        'path' => 'client-agence/user/{id}',
+                        'controller' => 'ClientAgenceController',
+                    ],
+                ],
+            ],
+            'attributes' => [
+                [
+                    'normalization_context' => [
+                        'groups' => [
+                            'client-agence:read',
+                        ],
+                    ],
+                    'denormalization_context' => [
+                        'groups' => [
+                            'client-agence:write',
+                        ],
+                    ],
+                ],
+            ],
+            'repositoryClass' => [
+                1 => 'App\\Repository\\ClientAgenceRepository',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+    ],
+    []
+); }];

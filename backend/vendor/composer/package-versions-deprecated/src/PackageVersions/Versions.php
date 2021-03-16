@@ -124,10 +124,10 @@ final class Versions
   'doctrine/doctrine-fixtures-bundle' => '3.4.0@870189619a7770f468ffb0b80925302e065a3b34',
   'nikic/php-parser' => 'v4.10.4@c6d052fc58cb876152f89f532b95a8d7907e7f0e',
   'symfony/maker-bundle' => 'v1.29.1@313b5669a5370bf36cd34fa8f5b5bbbfa5fb8aa8',
-  'symfony/polyfill-ctype' => '*@f0445a030ef2241f5987e9dae045f616e4b3f04e',
-  'symfony/polyfill-iconv' => '*@f0445a030ef2241f5987e9dae045f616e4b3f04e',
-  'symfony/polyfill-php72' => '*@f0445a030ef2241f5987e9dae045f616e4b3f04e',
-  '__root__' => 'dev-master@f0445a030ef2241f5987e9dae045f616e4b3f04e',
+  'symfony/polyfill-ctype' => '*@c5bc8d93c172b27e906dd00c036ae236559b89d7',
+  'symfony/polyfill-iconv' => '*@c5bc8d93c172b27e906dd00c036ae236559b89d7',
+  'symfony/polyfill-php72' => '*@c5bc8d93c172b27e906dd00c036ae236559b89d7',
+  '__root__' => 'dev-master@c5bc8d93c172b27e906dd00c036ae236559b89d7',
 );
 
     private function __construct()

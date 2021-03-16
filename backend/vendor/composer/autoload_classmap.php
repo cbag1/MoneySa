@@ -499,6 +499,7 @@ return array(
     'ApiPlatform\\Core\\Validator\\EventListener\\ValidateListener' => $vendorDir . '/api-platform/core/src/Validator/EventListener/ValidateListener.php',
     'ApiPlatform\\Core\\Validator\\Exception\\ValidationException' => $vendorDir . '/api-platform/core/src/Validator/Exception/ValidationException.php',
     'ApiPlatform\\Core\\Validator\\ValidatorInterface' => $vendorDir . '/api-platform/core/src/Validator/ValidatorInterface.php',
+    'App\\Controller\\TransactionController' => $baseDir . '/src/Controller/TransactionController.php',
     'App\\Controller\\UserController' => $baseDir . '/src/Controller/UserController.php',
     'App\\DataFixtures\\AppFixtures' => $baseDir . '/src/DataFixtures/AppFixtures.php',
     'App\\DataPersister\\AgenceDataPersister' => $baseDir . '/src/DataPersister/AgenceDataPersister.php',

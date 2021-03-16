@@ -86,7 +86,15 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'transaction:read',
                     'transaction:write',
                 ],
-                12 => [
+                [
+                    'transaction:read',
+                    'transaction:write',
+                ],
+                [
+                    'transaction:read',
+                    'transaction:write',
+                ],
+                [
                     'transaction:read',
                     'transaction:write',
                 ],

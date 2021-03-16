@@ -43,6 +43,18 @@ const routes: Routes = [
     path: 'retrait',
     loadChildren: () => import('./retrait/retrait.module').then( m => m.RetraitPageModule)
   },
+  {
+    path: 'commission',
+    loadChildren: () => import('./commission/commission.module').then( m => m.CommissionPageModule)
+  },
+  {
+    path: 'user-agence',
+    loadChildren: () => import('./user-agence/user-agence.module').then( m => m.UserAgencePageModule)
+  },
+  {
+    path: 'depot-compte',
+    loadChildren: () => import('./depot-compte/depot-compte.module').then( m => m.DepotComptePageModule)
+  },
 ];
 
 @NgModule({

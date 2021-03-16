@@ -992,6 +992,7 @@ class ComposerStaticInitcc36074893b79cddf3d9333cefb208fc
         'ApiPlatform\\Core\\Validator\\EventListener\\ValidateListener' => __DIR__ . '/..' . '/api-platform/core/src/Validator/EventListener/ValidateListener.php',
         'ApiPlatform\\Core\\Validator\\Exception\\ValidationException' => __DIR__ . '/..' . '/api-platform/core/src/Validator/Exception/ValidationException.php',
         'ApiPlatform\\Core\\Validator\\ValidatorInterface' => __DIR__ . '/..' . '/api-platform/core/src/Validator/ValidatorInterface.php',
+        'App\\Controller\\TransactionController' => __DIR__ . '/../..' . '/src/Controller/TransactionController.php',
         'App\\Controller\\UserController' => __DIR__ . '/../..' . '/src/Controller/UserController.php',
         'App\\DataFixtures\\AppFixtures' => __DIR__ . '/../..' . '/src/DataFixtures/AppFixtures.php',
         'App\\DataPersister\\AgenceDataPersister' => __DIR__ . '/../..' . '/src/DataPersister/AgenceDataPersister.php',

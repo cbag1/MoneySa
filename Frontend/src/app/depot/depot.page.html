@@ -25,7 +25,7 @@
 
     </ion-segment>
 
-    <form action="" [formGroup]="form" (ngSubmit)="loginProcess()">
+    <form action="" [formGroup]="form">
       <div>
         <div *ngIf="segment === 'emetteur'">
 
@@ -98,7 +98,7 @@
       </div>
 
       <br>
-      <ion-button type="submit" [disabled]="!form.valid" expand="block" slot="bottom" color="danger" shape="round">
+      <ion-button type="submit" [disabled]="!form.valid" (click)="depotProcess()" expand="block" slot="bottom" color="danger" shape="round">
         Suivant
       </ion-button>
 

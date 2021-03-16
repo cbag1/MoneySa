@@ -1,0 +1,58 @@
+
+<ion-content>
+
+  <div class="entete">
+    <div class="logo">
+      <img src="../../assets/logo.png" alt="">
+    </div>
+
+    <div class="t-login">
+      <span>
+        <ion-icon color="secondary" slot="start" name="return-up-forward-outline"></ion-icon>
+        <ion-text color="secondary"> Commissions </ion-text>
+      </span>
+    </div>
+  </div>
+
+  <br><br>
+
+
+  <div>
+    <!-- <ngx-datatable #table class="material expandable striped" [rows]="rows" [rowClass]="getRowClass"
+      [rowHeight]="'auto'" [headerHeight]="'auto'" [columnMode]="'flex'" [reorderable]="false"  [columns]="columns">
+    </ngx-datatable> -->
+
+    <ngx-datatable class="material" [columnMode]="ColumnMode.flex" [headerHeight]="50" [footerHeight]="50"
+      rowHeight="auto" [rows]="rows">
+      <ngx-datatable-column name="date" [flexGrow]="1">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="type" [flexGrow]="1">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="montant" [flexGrow]="1">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+
+
+
+      <ngx-datatable-footer *ngIf="true">
+        <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize"
+          let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset">
+          <div style="padding: 5px 10px">
+            <hr style="width:100%" />
+            <div item-end > Total Commission : {{ commission }} </div>
+          </div>
+        </ng-template>
+      </ngx-datatable-footer>
+    </ngx-datatable>
+  </div>
+</ion-content>

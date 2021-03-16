@@ -17,4 +17,12 @@ export class DepotService {
     return this.http.get('http://localhost:8000/api/transaction');
   }
 
+  getClients() {
+    return this.http.get('http://localhost:8000/api/client-agence');
+  }
+
+  getOneClient(id : number) {
+    return this.http.get('http://localhost:8000/api/client-agence/agence/${id}');
+  }
+
 }

@@ -1,0 +1,34 @@
+<ion-content>
+
+  <div class="entete">
+    <div class="logo">
+      <img src="../../assets/logo.png" alt="">
+    </div>
+
+    <div class="t-login">
+      <span>
+        <ion-icon color="secondary" slot="start" name="return-up-forward-outline"></ion-icon>
+        <ion-text color="secondary">Dépôt</ion-text>
+      </span>
+    </div>
+  </div>
+  <div class="contenu">
+
+    <br>
+
+    <ion-item>
+      <ion-label> Clients </ion-label>
+      <ion-select [(ngModel)]="clientchoisi" (ionChange)="onChange($event)">
+        <ion-select-option *ngFor="let client of clients" [value]="client.id" > {{ client.client }}  </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- <ion-item>
+      <ion-label position="stacked"> Code :</ion-label>
+      <ion-input (keydown)="onKeydown($event)" [(ngModel)]="code" type="text"> </ion-input>
+    </ion-item>
+    <br>
+    <hr> -->
+
+  </div>
+</ion-content>

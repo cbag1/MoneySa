@@ -20,8 +20,7 @@ export class AuthService {
       map(response => {
         // login successful if there's a jwt token in the response
         if (response) {
-          // console.log(response);
-          //console.log(response);
+          
           localStorage.setItem('jwt', JSON.stringify(response));
           this._userIsAuthenticated = true;
           return response;
@@ -33,6 +32,11 @@ export class AuthService {
   getUser(id: string) {
 
     return this.http.get(`http://localhost:8000/api/users/${id}/agence`);
+  }
+
+  getClient(id: string) {
+
+    return this.http.get(`http://localhost:8000/api/client-agence/user/${id}`);
   }
 
   logout() {

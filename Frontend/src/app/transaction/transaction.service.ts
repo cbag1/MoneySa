@@ -10,7 +10,7 @@ export class TransactionService {
 
   getTransaction(code: string) {
 
-    return this.http.get(`http://localhost:8000/api/transaction/${code}`);
+    return this.http.get(`http://localhost:8000/api/transaction/code/${code}`);
   }
 
   updateTransaction(id: number, data) {
@@ -23,6 +23,12 @@ export class TransactionService {
     return this.http.put(`http://localhost:8000/api/client/${id}`, data);
   }
 
+  getTransactionByUser(id: number) {
+
+    return this.http.get(`http://localhost:8000/api/transaction/agent/${id}`);
+  }
+
+  
 
   getFrais(nbr: string) {
     // console.log(nbr);
