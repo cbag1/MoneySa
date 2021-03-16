@@ -22,7 +22,8 @@ class Compte
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups("agence:write")
+     * @Groups({"agence:read","agence:write"})
+     * 
      * 
      */
     private $id;
@@ -37,6 +38,8 @@ class Compte
      * @ORM\Column(type="integer")
      * @Groups({"agence:read","agence:write"})
      * @Groups({"transactioncompte:read","transactioncompte:write"})
+     * @Groups({"client-agence:read","client-agence:write"})
+     * 
      */
     private $montant;
 

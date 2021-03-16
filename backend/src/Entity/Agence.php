@@ -87,6 +87,7 @@ class Agence
      * @ORM\OneToOne(targetEntity=Compte::class, inversedBy="agence", cascade={"persist", "remove"})
      * @Groups({"agence:read","agence:write"})
      * @Groups({"user:read","user:write"})
+     * @Groups({"client-agence:read","client-agence:write"})
      * @ApiSubresource()
      * 
      */

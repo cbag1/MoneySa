@@ -70,7 +70,7 @@ class ClientAgence
 
     /**
      * @ORM\ManyToOne(targetEntity=Agence::class)
-     * @Groups({"client-agence:read"})
+     * @Groups({"client-agence:read","client-agence:write"})
      * 
      */
     private $agence;

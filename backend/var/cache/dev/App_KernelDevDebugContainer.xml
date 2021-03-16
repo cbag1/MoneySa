@@ -416,6 +416,7 @@
       <argument type="service" id="security.helper"/>
       <argument type="service" id="App\Services\TransactionServices"/>
       <argument type="service" id="App\Repository\AgenceRepository"/>
+      <argument type="service" id="App\Repository\ClientAgenceRepository"/>
     </service>
     <service id="App\DataPersister\UserDataPersister" class="App\DataPersister\UserDataPersister" autowire="true" autoconfigure="true">
       <tag name="api_platform.data_persister"/>

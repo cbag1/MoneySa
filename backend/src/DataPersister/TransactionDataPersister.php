@@ -8,6 +8,7 @@ use App\Services\TransactionServices;
 use Doctrine\ORM\EntityManagerInterface;
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use App\Repository\AgenceRepository;
+use App\Repository\ClientAgenceRepository;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Security;
 
@@ -22,6 +23,8 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
     private $security;
     private $transactionservice;
     private $agences;
+    private $clientagence;
+    private $compteagence;
 
 
     public function __construct(
@@ -29,13 +32,15 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
         UserPasswordEncoderInterface $passwordEncoder,
         Security $security,
         TransactionServices $transactionservice,
-        AgenceRepository $agence
+        AgenceRepository $agence,
+        ClientAgenceRepository $clientagence
     ) {
         $this->_entityManager = $entityManager;
         $this->_passwordEncoder = $passwordEncoder;
         $this->security = $security;
         $this->transactionservice = $transactionservice;
         $this->agences = $agence;
+        $this->clientagence = $clientagence;
     }
 
     /**
@@ -50,21 +55,38 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
      * @param Transaction $data
      */
     public function persist($data, array $context = [])
-    {
-        $userbyagence = $this->agences->findByAgent($this->security->getUser());
+    {   
+        $ag=$this->agences->findByAgent($this->security->getUser());
+        
+        
         // dd($userbyagence[0]->getCompte()->getMontant());
-        // dd($this->security->getUser());
+        // dd($ag);
+        if($ag==null){
+            $ag=$this->clientagence->findByUser($this->security->getUser());
+            $this->compteagence=$ag[0];
+            // $compteagence->setMontant(22000);
+            // dd($compteagence->getMontant());
+            // dd("ici");
+            // dd($this->compteagence);
+        }{
+            // $this->compteagence =$ag[0]->getCompte();
+            // dd("ici aussi");
+            $this->compteagence =$ag[0];
+            
+        }
+        $this->compteagence=$this->compteagence->getAgence()->getCompte();
+        // dd($this->compteagence);
 
         if ($data->getAgentDepot() === null) {
             $data->setCode("t-" . uniqid());
             $data->setAgentDepot($this->security->getUser());
             $data->setDateDepot(new \DateTime());
-            $userbyagence[0]->getCompte()->setMontant($userbyagence[0]->getCompte()->getMontant() + $data->getMontant());
-            // dd($userbyagence[0]->getCompte()->getMontant());
+            $this->compteagence->setMontant($this->compteagence->getMontant() + $data->getMontant());
         } else {
             $data->setAgentRetrait($this->security->getUser());
             $data->setDateRetrait(new \DateTime());
-            $userbyagence[0]->getCompte()->setMontant($userbyagence[0]->getCompte()->getMontant() - $data->getMontant());
+            $this->compteagence->setMontant($this->compteagence->getMontant() - $data->getMontant());
+
         }
 
         $frais = $this->transactionservice->fraisEnvoi($data->getMontant());

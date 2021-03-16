@@ -872,7 +872,7 @@ return [[
 
 0 => 'N;',
 1 => [],
-2 => 1615897297,
+2 => 1615912449,
 3 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
@@ -1150,6 +1150,7 @@ return [[
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\OneToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\OneToOne')),
             clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
             clone $p['Symfony\\Component\\Serializer\\Annotation\\Groups'],
+            clone $p['Symfony\\Component\\Serializer\\Annotation\\Groups'],
             clone ($p['ApiPlatform\\Core\\Annotation\\ApiSubresource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Core\\Annotation\\ApiSubresource')),
         ],
         null,
@@ -1178,6 +1179,10 @@ return [[
                         'user:read',
                         'user:write',
                     ],
+                    [
+                        'client-agence:read',
+                        'client-agence:write',
+                    ],
                 ],
             ],
         ],
@@ -1186,6 +1191,7 @@ return [[
             $o[1],
             $o[2],
             $o[3],
+            $o[4],
         ],
         []
     );
@@ -1454,6 +1460,7 @@ return [[
             'Symfony\\Component\\Serializer\\Annotation\\Groups' => [
                 'groups' => [
                     3 => [
+                        'agence:read',
                         'agence:write',
                     ],
                 ],
@@ -1474,6 +1481,7 @@ return [[
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
             clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
             clone $p['Symfony\\Component\\Serializer\\Annotation\\Groups'],
+            clone $p['Symfony\\Component\\Serializer\\Annotation\\Groups'],
         ],
         null,
         [
@@ -1492,6 +1500,10 @@ return [[
                         'transactioncompte:read',
                         'transactioncompte:write',
                     ],
+                    [
+                        'client-agence:read',
+                        'client-agence:write',
+                    ],
                 ],
             ],
         ],
@@ -1499,6 +1511,7 @@ return [[
             $o[0],
             $o[1],
             $o[2],
+            $o[3],
         ],
         []
     );
@@ -1895,8 +1908,6 @@ return [[
                 ],
                 'attributes' => [
                     [
-                        'security' => 'is_granted(\'ROLE_ADMIN_AGENCE\')',
-                        'security_message' => ' Seul l\'admin de l\'agence peut avoir acces aux agences',
                         'normalization_context' => [
                             'groups' => [
                                 'transaction:read',
