@@ -33,6 +33,8 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 1 => [
                     'agence:read',
                     'agence:write',
+                    'client-agence:read',
+                    'client-agence:write',
                 ],
                 [
                     'agence:read',

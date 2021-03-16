@@ -13,6 +13,7 @@ import { AlertController } from '@ionic/angular';
 export class DepotPage implements OnInit {
 
   form: FormGroup;
+  r: any;
   segment = "emetteur";
 
   constructor(private alertCtrl: AlertController, private auth: AuthService, private router: Router, private depotservice: DepotService) { }
@@ -138,8 +139,10 @@ export class DepotPage implements OnInit {
           handler: () => {
             this.depotservice.addTransaction(this.form.value).subscribe(
               response => {
-               
-                console.log(response);
+                // console.log(JSON.stringify(response));
+                this.r = response;
+                // console.log(this.r.code);
+                this.getCode();
               },
               error => {
                 console.log(error);
@@ -159,6 +162,18 @@ export class DepotPage implements OnInit {
     //     console.log(error);
     //   }
     // );
+  }
+
+  async getCode() {
+    const alert = await this.alertCtrl.create({
+      message: 'CODE : ' + this.r.code,
+      buttons: ['Okay']
+      
+    });
+
+    await alert.present();
+
+
   }
 
 }

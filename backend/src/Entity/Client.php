@@ -10,10 +10,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- *  attributes={
- *              "security"="is_granted('ROLE_ADMIN_AGENCE')",
- *              "security_message"=" Seul l'admin de l'agence peut avoir acces aux agences"            
- *      },
  *      collectionOperations={
  *              "GET"={
  *                      "method"="GET",

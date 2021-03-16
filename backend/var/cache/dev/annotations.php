@@ -872,7 +872,7 @@ return [[
 
 0 => 'N;',
 1 => [],
-2 => 1615912449,
+2 => 1615931343,
 3 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
@@ -1023,8 +1023,6 @@ return [[
                 ],
                 'attributes' => [
                     [
-                        'security' => 'is_granted(\'ROLE_ADMIN\')',
-                        'security_message' => ' Seul l\'admin Systeme peut avoir acces aux agences',
                         'normalization_context' => [
                             'groups' => [
                                 'agence:read',
@@ -1294,8 +1292,6 @@ return [[
                 ],
                 'attributes' => [
                     [
-                        'security' => 'is_granted(\'ROLE_ADMIN_AGENCE\')',
-                        'security_message' => ' Seul l\'admin de l\'agence peut avoir acces aux agences',
                         'normalization_context' => [
                             'groups' => [
                                 'client:read',
@@ -1449,6 +1445,7 @@ return [[
             clone ($p['Doctrine\\ORM\\Mapping\\GeneratedValue'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\GeneratedValue')),
             clone ($p['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
             clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+            clone $p['Symfony\\Component\\Serializer\\Annotation\\Groups'],
         ],
         null,
         [
@@ -1463,6 +1460,10 @@ return [[
                         'agence:read',
                         'agence:write',
                     ],
+                    [
+                        'client-agence:read',
+                        'client-agence:write',
+                    ],
                 ],
             ],
         ],
@@ -1471,6 +1472,7 @@ return [[
             $o[1],
             $o[2],
             $o[3],
+            $o[4],
         ],
         []
     );

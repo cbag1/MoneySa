@@ -55,26 +55,33 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
      * @param Transaction $data
      */
     public function persist($data, array $context = [])
-    {   
-        $ag=$this->agences->findByAgent($this->security->getUser());
-        
-        
-        // dd($userbyagence[0]->getCompte()->getMontant());
-        // dd($ag);
-        if($ag==null){
-            $ag=$this->clientagence->findByUser($this->security->getUser());
-            $this->compteagence=$ag[0];
+    {
+        $ag = $this->agences->findByAgent($this->security->getUser());
+
+        $i=true;
+        if ($ag == null) {
+            $ag = $this->clientagence->findByUser($this->security->getUser());
+            $agence = $ag[0];
+            $i=false;
             // $compteagence->setMontant(22000);
-            // dd($compteagence->getMontant());
+            // $this->compteagence = $this->compteagence->getAgence()->getCompte();
+            // dd($this->compteagence);
+
+            // dd($compteagence->getMontant(    ));
             // dd("ici");
             // dd($this->compteagence);
-        }{
+        } {
             // $this->compteagence =$ag[0]->getCompte();
             // dd("ici aussi");
-            $this->compteagence =$ag[0];
-            
+            $this->compteagence = $ag[0];
+            // dd($this->compteagence);
         }
-        $this->compteagence=$this->compteagence->getAgence()->getCompte();
+        if ($i){
+            $this->compteagence= $ag[0]->getCompte();
+        }else{
+            $this->compteagence=$agence->getAgence()->getCompte();
+        }
+        
         // dd($this->compteagence);
 
         if ($data->getAgentDepot() === null) {

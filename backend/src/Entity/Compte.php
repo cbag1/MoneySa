@@ -23,6 +23,7 @@ class Compte
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"agence:read","agence:write"})
+     * @Groups({"client-agence:read","client-agence:write"})
      * 
      * 
      */

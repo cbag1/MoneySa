@@ -40,8 +40,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'attributes' => [
                 [
-                    'security' => 'is_granted(\'ROLE_ADMIN_AGENCE\')',
-                    'security_message' => ' Seul l\'admin de l\'agence peut avoir acces aux agences',
                     'normalization_context' => [
                         'groups' => [
                             'client:read',
