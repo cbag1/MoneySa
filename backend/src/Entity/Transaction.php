@@ -135,6 +135,12 @@ class Transaction
      */
     private $client;
 
+    /**
+     * @ORM\Column(type="integer")
+     * @Groups({"transaction:read","transaction:write"})
+     */
+    private $valide = 0;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -273,4 +279,18 @@ class Transaction
 
         return $this;
     }
+
+    public function getValide(): ?int
+    {
+        return $this->valide;
+    }
+
+    public function setValide(int $valide): self
+    {
+        $this->valide = $valide;
+
+        return $this;
+    }
+
+
 }

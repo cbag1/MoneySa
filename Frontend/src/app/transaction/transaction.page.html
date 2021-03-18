@@ -1,4 +1,3 @@
-
 <ion-content>
 
   <div class="entete">
@@ -24,8 +23,9 @@
       [rowHeight]="'auto'" [headerHeight]="'auto'" [columnMode]="'flex'" [reorderable]="false"  [columns]="columns">
     </ngx-datatable> -->
 
-    <ngx-datatable class="material" [columnMode]="ColumnMode.flex" [headerHeight]="50" [footerHeight]="50"
-      rowHeight="auto" [rows]="rows">
+    <ngx-datatable [selected]="selected" rowHeight="auto"  [selectionType]="SelectionType.single"
+      (select)="onSelect($event)" class="material" [columnMode]="ColumnMode.flex" [headerHeight]="50"
+      [footerHeight]="50" rowHeight="auto" [rows]="rows">
       <ngx-datatable-column name="date" [flexGrow]="1">
         <ng-template let-value="value" ngx-datatable-cell-template>
           {{ value }}

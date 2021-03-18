@@ -22,16 +22,31 @@ class TransactionServices
 
     public function fraisEnvoi($montant)
     {
-        $frais=0;
+        $frais = 0;
         foreach ($this->tableaufrais as $key => $value) {
             $sep = explode("-", $key);
             if (intval($sep[0]) <= $montant && intval($sep[1]) > $montant) {
-                $frais=$value;
+                $frais = $value;
                 break;
             }
         }
         return $frais;
     }
 
-  
+    public function envoiesms($numero, $montant, $code, $nom)
+    {
+        $sid = "AC3d76f4ba21a37f3af4ba24c95eafb971"; // Your Account SID from www.twilio.com/console
+        $token = "e4b7d801964ffddd78c38535576a342a"; // Your Auth Token from www.twilio.com/console
+
+        $client = new \Twilio\Rest\Client($sid, $token);
+        $message = $client->messages->create(
+            '+221' . $numero, // Text this number
+            [
+                'from' => '+12054305961', // From a valid Twilio number
+                'body' => 'Bienvenue dans Money SA ! , vous venez de recevoir ' . $montant . ' de la part de ' . $nom . ' Code de Transaction : ' . $code
+            ]
+        );
+
+        print $message->sid;
+    }
 }

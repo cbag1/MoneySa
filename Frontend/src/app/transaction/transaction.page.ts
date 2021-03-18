@@ -1,7 +1,8 @@
 import { DepotService } from './../depot/depot.service';
 import { Component, OnInit } from '@angular/core';
 import { TransactionService } from './transaction.service';
-import { ColumnMode } from '@swimlane/ngx-datatable';
+import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-transaction',
@@ -13,10 +14,12 @@ export class TransactionPage implements OnInit {
   transactions: number = 0;
   rows: any = [];
   ColumnMode = ColumnMode;
+  SelectionType = SelectionType;
+  selected = [];
   // rows2 :any = { donnees : {}};
   // columns = [{ prop: 'date' }, { name: 'utilisateur' }, { name: 'type' }, { name: 'montant' }, { name: 'frais' }];
 
-  constructor(private depotservice: DepotService, private transactionservice: TransactionService) { }
+  constructor(private alertCtrl: AlertController, private depotservice: DepotService, private transactionservice: TransactionService) { }
 
   ngOnInit() {
     this.initList();
@@ -32,8 +35,8 @@ export class TransactionPage implements OnInit {
         // let j=0;
         for (var i in res) {
           let r = {};
-          
-          
+
+
           r['montant'] = res[i]['montant'];
           this.transactions += res[i]['montant'];
           r['frais'] = this.transactionservice.getFrais(r['montant']);
@@ -41,6 +44,8 @@ export class TransactionPage implements OnInit {
             r['date'] = res[i]['dateDepot'].substring(0, 10);
             r['utilisateur'] = res[i]['client']['nomClient'];
             r['type'] = "Dépôt";
+            r['id'] = res[i]['id'];
+            r['valide'] = res[i]['valide'];
 
           } else {
             r['date'] = res[i]['dateRetrait'].substring(0, 10);
@@ -48,10 +53,10 @@ export class TransactionPage implements OnInit {
             r['type'] = "Retrait";
 
           }
-          console.log(r);
+          // console.log(r);
           this.rows.push(r);
           this.rows = [...this.rows];
-          console.log(this.rows);
+          // console.log(this.rows);
 
         }
 
@@ -59,4 +64,63 @@ export class TransactionPage implements OnInit {
     );
   }
 
+
+  async onSelect({ selected }) {
+
+    console.log('Select Event', selected, this.selected);
+    // console.log(this.selected[0].valide)
+    if (this.selected[0].valide == 0) {
+      const alert = await this.alertCtrl.create({
+        header: 'Transaction ?',
+        message: 'La transaction est toujours en cours ',
+
+        buttons: [
+          {
+            text: 'Quitter',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: () => {
+              console.log('Confirm Cancel: ');
+            }
+          }, {
+            text: 'Annuler la Transaction ',
+            handler: () => {
+              this.transactionservice.deleteTransaction(this.selected[0].id).subscribe(
+                response => {
+                  console.log(response);
+                  this.initList();
+                  // this.getCode();
+                },
+                error => {
+                  console.log(error);
+                }
+              )
+            }
+          }
+        ]
+
+
+      });
+
+      await alert.present();
+    } else {
+      if (this.selected[0].valide == 1) {
+        const alert = await this.alertCtrl.create({
+          message: 'La Transaction est deja retiré !!!',
+          buttons: ['Okay']
+
+        });
+
+        await alert.present();
+      } else {
+        const alert = await this.alertCtrl.create({
+          message: 'La Transaction à été annulé !!!',
+          buttons: ['Okay']
+
+        });
+
+        await alert.present();
+      }
+    }
+  }
 }

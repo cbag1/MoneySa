@@ -15,6 +15,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
     ],
     null,
     [
@@ -33,6 +34,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'agentDepot',
                 'agentRetrait',
                 'client',
+                'valide',
             ],
             'attributesMetadata' => [
                 [
@@ -48,11 +50,16 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'agentDepot' => $o[10],
                     'agentRetrait' => $o[11],
                     'client' => $o[12],
+                    'valide' => $o[13],
                 ],
             ],
             'groups' => [
                 1 => [
                     'transaction:read',
+                ],
+                [
+                    'transaction:read',
+                    'transaction:write',
                 ],
                 [
                     'transaction:read',

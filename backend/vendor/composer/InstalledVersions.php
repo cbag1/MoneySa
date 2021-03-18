@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'c5bc8d93c172b27e906dd00c036ae236559b89d7',
+    'reference' => '3a78956ca54c82740d97a9013f6821d1d23ef862',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'c5bc8d93c172b27e906dd00c036ae236559b89d7',
+      'reference' => '3a78956ca54c82740d97a9013f6821d1d23ef862',
     ),
     'api-platform/core' => 
     array (
@@ -943,6 +943,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '1f3b7e2c06cc05d42936a8ad508ff1db7975cdc5',
+    ),
+    'twilio/sdk' => 
+    array (
+      'pretty_version' => '6.19.0',
+      'version' => '6.19.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e4288c184ad2fddbb637c1036626cf16814618b0',
     ),
     'webmozart/assert' => 
     array (

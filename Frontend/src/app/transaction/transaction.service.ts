@@ -28,6 +28,11 @@ export class TransactionService {
     return this.http.get(`http://localhost:8000/api/transaction/agent/${id}`);
   }
 
+  deleteTransaction(id: number) {
+
+    return this.http.delete(`http://localhost:8000/api/transaction/${id}`);
+  }
+
   
 
   getFrais(nbr: string) {

@@ -56,13 +56,16 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
      */
     public function persist($data, array $context = [])
     {
+
+        // dd($data);
+
         $ag = $this->agences->findByAgent($this->security->getUser());
 
-        $i=true;
+        $i = true;
         if ($ag == null) {
             $ag = $this->clientagence->findByUser($this->security->getUser());
             $agence = $ag[0];
-            $i=false;
+            $i = false;
             // $compteagence->setMontant(22000);
             // $this->compteagence = $this->compteagence->getAgence()->getCompte();
             // dd($this->compteagence);
@@ -76,12 +79,12 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
             $this->compteagence = $ag[0];
             // dd($this->compteagence);
         }
-        if ($i){
-            $this->compteagence= $ag[0]->getCompte();
-        }else{
-            $this->compteagence=$agence->getAgence()->getCompte();
+        if ($i) {
+            $this->compteagence = $ag[0]->getCompte();
+        } else {
+            $this->compteagence = $agence->getAgence()->getCompte();
         }
-        
+
         // dd($this->compteagence);
 
         if ($data->getAgentDepot() === null) {
@@ -89,11 +92,12 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
             $data->setAgentDepot($this->security->getUser());
             $data->setDateDepot(new \DateTime());
             $this->compteagence->setMontant($this->compteagence->getMontant() + $data->getMontant());
+            $sms = $this->transactionservice->envoiesms($data->getClient()->getTelBeneficiaire(), $data->getMontant(), $data->getCode(), $data->getClient()->getNomClient());
         } else {
+            $data->setValide(1);
             $data->setAgentRetrait($this->security->getUser());
             $data->setDateRetrait(new \DateTime());
             $this->compteagence->setMontant($this->compteagence->getMontant() - $data->getMontant());
-
         }
 
         $frais = $this->transactionservice->fraisEnvoi($data->getMontant());
@@ -116,9 +120,9 @@ class TransactionDataPersister implements ContextAwareDataPersisterInterface
      */
     public function remove($data, array $context = [])
     {
-        // $data->setArchive(1);
-        // $this->_entityManager->persist($data);
-        // $this->_entityManager->flush();
+        $data->setValide(2);
+        $this->_entityManager->persist($data);
+        $this->_entityManager->flush();
         // $this->_entityManager->remove($data);
         // $this->_entityManager->flush();
     }
